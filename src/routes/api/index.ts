@@ -1,10 +1,7 @@
 import express from 'express';
-import users from './users';
-import tasks from './task';
+import user from './user';
 
 const router = express.Router();
-
-router.use('/users', users);
-router.use('/tasks', tasks);
+router.use('/users', user);
 
 export default router;

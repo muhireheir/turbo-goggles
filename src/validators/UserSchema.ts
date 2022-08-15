@@ -12,4 +12,10 @@ const existinguserSchema = joi.object({
   password: joi.string().required().min(6),
 });
 
-export default { newUserSchema, existinguserSchema };
+const addUserSchema = joi.object({
+  firstName: joi.string().required(),
+  lastName: joi.string().required(),
+  email: joi.string().email().required(),
+});
+
+export default { newUserSchema, existinguserSchema, addUserSchema };
