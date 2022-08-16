@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 import userController from '../../controllers/UserController';
-import userExists from '../../middlewares/userExists';
+import { userExists } from '../../middlewares/user/userExists';
 import validatation from '../../validators/user';
 
 const router: Router = express.Router();

@@ -6,7 +6,7 @@ import userService from '../../services/user.service';
 
 export const classExist = async (req:Request, res:Response, next:NextFunction) => {
   try {
-    const { classId } = req.params;
+    const classId = req.params.classId || req.body.classId;
     const getClass = await classService.getclassById(parseInt(classId));
     if (!getClass) {
       return response.badRequest(res, 'Class not found');

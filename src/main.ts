@@ -2,12 +2,23 @@ import express, { Application } from 'express';
 import dotenv from 'dotenv';
 import router from './routes/routes';
 import db from './config/database.config';
+// import { User } from './models/User';
+// import BcryptUtil from './helpers/Bcrypt';
 
 dotenv.config();
 db.authenticate({
   logging: false,
 }).then(async () => {
   await db.sync();
+  // await User.bulkCreate([
+  //   {
+  //     firstName: 'John',
+  //     lastName: 'Doe',
+  //     password: BcryptUtil.hashPassword('admin123'),
+  //     role: 'ADMIN',
+  //     email: 'admin@shecancode.com',
+  //   },
+  // ]);
 });
 
 const app :Application = express();
