@@ -43,4 +43,5 @@ User.init({
   },
 }, {
   sequelize: db,
+  tableName: 'users',
 });

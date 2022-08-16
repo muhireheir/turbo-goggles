@@ -7,6 +7,8 @@ const userService = {
       exclude: ['password', 'createdAt', 'updatedAt'],
     },
   }),
+  getUserById: (id:number) => User.findByPk(id),
+  getUsersByrole: (role:string) => User.findAll({ where: { role } }),
 };
 
 export default userService;

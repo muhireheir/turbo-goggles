@@ -33,6 +33,10 @@
     ],
     "rules": {
         "import/prefer-default-export":"off",
+        "radix":"off",
+        "no-await-in-loop":"off",
+        "no-continue":"off",
+
         "import/extensions": [
             "error",
             "ignorePackages",

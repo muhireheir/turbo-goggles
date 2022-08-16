@@ -4,7 +4,9 @@ import router from './routes/routes';
 import db from './config/database.config';
 
 dotenv.config();
-db.authenticate().then(async () => {
+db.authenticate({
+  logging: false,
+}).then(async () => {
   await db.sync();
 });
 
