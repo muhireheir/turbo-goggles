@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import response from '../helpers/response';
-import userService from '../services/user.service';
+import response from '../../helpers/response';
+import userService from '../../services/user.service';
 
 const { serverError, conflict, badRequest } = response;
 
@@ -18,7 +18,8 @@ export const userExists = async (req:Request, res:Response, next:NextFunction) =
 
 export const tutorExist = async (req:Request, res:Response, next:NextFunction) => {
   try {
-    const user = await userService.getUserById(parseInt(req.params.tutorId));
+    const tutorId = req.params.tutorId || req.body.tutorId;
+    const user = await userService.getUserById(parseInt(tutorId));
     if (!user) {
       return badRequest(res, 'Tutor not found');
     }
@@ -32,4 +33,4 @@ export const tutorExist = async (req:Request, res:Response, next:NextFunction) =
   }
 };
 
-export default userExists;
+export default { userExists };

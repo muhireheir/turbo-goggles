@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import classService from '../services/class.service';
 import response from '../helpers/response';
+import courseService from '../services/course.service';
 
 const classController = {
   create: async (req: Request, res: Response) => {
@@ -32,6 +33,14 @@ const classController = {
       await classService.update({ tutorId: parseInt(req.params.tutorId) },
         parseInt(req.params.classId));
       return response.success(res, 'Tutor assigned to a class', { });
+    } catch (error:any) {
+      return response.serverError(res, error.message);
+    }
+  },
+  getCourses: async (req: Request, res: Response) => {
+    try {
+      const courses = await courseService.getByClassId(req.params.classId as unknown as number);
+      return response.success(res, 'class courses', courses);
     } catch (error:any) {
       return response.serverError(res, error.message);
     }
