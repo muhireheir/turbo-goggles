@@ -27,6 +27,7 @@ export const isAuthenticated = async (req:Request, res:Response, next:NextFuncti
 // eslint-disable-next-line max-len
 export const roles = (allowedRoles:Array<string>) => (req:Request, res:Response, next:NextFunction) => {
   try {
+    console.log('\n\n\n\n\n\n', allowedRoles, ' \n\n\n\n\n\n');
     if (!allowedRoles.includes(req.user?.role as string)) {
       return response.forbidden(res, 'Not allowed to access this');
     }
