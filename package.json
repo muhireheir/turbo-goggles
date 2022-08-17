@@ -10,7 +10,8 @@
     "build": "tsc --project ./",
     "start": "node ./build/main.js",
     "seed": "eslint ./src --ext .ts --fix && node ./src/seeders/index.ts",
-    "lint": "eslint ./src/"
+    "lint": "eslint ./src/",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
