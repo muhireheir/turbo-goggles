@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { v4 } from 'uuid';
+// import { v4 } from 'uuid';
 import { User } from '../models/User';
 import BcryptUtil from '../helpers/Bcrypt';
 import response from '../helpers/response';
@@ -38,7 +38,7 @@ const UserController = {
     }
   },
   addUser: async (req: Request, res: Response) => {
-    const generatedPassword = v4();
+    const generatedPassword = 'default123';
     const password = BcryptUtil.hashPassword(generatedPassword);
     const user = await User.create({ ...req.body, password, role: 'TUTOR' });
     return response.success(res, 'Account created', { role: user.get().role, email: user.get().email });

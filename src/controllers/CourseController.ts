@@ -5,6 +5,7 @@ import courseService from '../services/course.service';
 const courseController = {
   create: async (req: Request, res: Response) => {
     try {
+      req.body = { ...req.body, tutorId: req.user?.id };
       await courseService.addCourse(req.body);
       return response.success(res, 'Course added!', {});
     } catch (error:any) {
